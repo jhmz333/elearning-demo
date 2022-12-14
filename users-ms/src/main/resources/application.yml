@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ${MS_NAME:users-ms}
+  datasource:
+    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?serverTimezone=Europe/Madrid
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB102Dialect
+    generate-ddl: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+  file:
+    path: /app/logs
+
+server:
+  port: ${PORT:8001}
+
+ms:
+  courses:
+    url: ${COURSES_MS_URL:courses-ms:8002}

@@ -1,0 +1,69 @@
+version: "3.9"
+
+services:
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.10.2
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mariadb-data:/var/lib/mysql:rw'
+    networks:
+      - mariadb-network
+    restart: always
+
+  postgres:
+    container_name: postgres
+    image: postgres:15.1
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres-data:/var/lib/postgresql/data:rw'
+    networks:
+      - postgres-network
+    environment:
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/pgdata/
+    restart: always
+
+  users-ms:
+    container_name: users-ms
+    build:
+      context: users-ms
+      dockerfile: 'Dockerfile'
+    ports:
+      - '8001:8001'
+    env_file: users-ms/.env
+    networks:
+      - microservices-network
+      - mariadb-network
+    depends_on:
+      - mariadb
+    restart: always
+
+  courses-ms:
+    container_name: courses-ms
+    build:
+      context: courses-ms
+      dockerfile: 'Dockerfile'
+    ports:
+      - '8002:8002'
+    env_file: courses-ms/.env
+    networks:
+      - microservices-network
+      - postgres-network
+    depends_on:
+      - postgres
+    restart: always
+
+volumes:
+  postgres-data:
+    external: true
+  mariadb-data:
+    external: true
+
+networks:
+  postgres-network:
+  mariadb-network:
+  microservices-network:

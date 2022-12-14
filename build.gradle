@@ -1,0 +1,14 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+		maven { url 'https://repo.spring.io/milestone' }
+    }
+
+    dependencies {
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+}

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: ${MS_NAME:courses-ms}
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    properties:
+      hibername.jdbc.lob.non_contextual_creation: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+  file:
+    path: /app/logs
+
+server:
+  port: ${PORT:8002}
+
+ms:
+  users:
+    url: ${USERS_MS_URL:users-ms:8001}
