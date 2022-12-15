@@ -15,7 +15,7 @@ phases:
     finally:
       - echo Logged to ECR
   build:
-    command:
+    commands:
       - echo Building microservices
       - gradle clean build -x test
       - echo Building images
