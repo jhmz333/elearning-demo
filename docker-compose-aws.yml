@@ -3,13 +3,13 @@ version: "3.9"
 services:
 
   postgres:
-    image: REPOSITORY_URI/postgres:15.1
+    image: $REPOSITORY_URI/postgres:15.1
 
   mariadb:
-    image: REPOSITORY_URI/mariadb:10.10.2
+    image: $REPOSITORY_URI/mariadb:10.10.2
 
   users-ms:
-    image: REPOSITORY_URI/elearning-demo/users-ms:latest
+    image: $REPOSITORY_URI/elearning-demo/users-ms:latest
 
   courses-ms:
-    image: REPOSITORY_URI/elearning-demo/courses-ms:latest
+    image: $REPOSITORY_URI/elearning-demo/courses-ms:latest

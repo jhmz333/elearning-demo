@@ -4,14 +4,14 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - apt-get update -y
-      - apt-get install -y gradle
+      - yum update -y
+      - yum install -y gradle
     finally:
       - echo Gradle installed
   pre_build:
     commands:
       - echo Login to ECR
-      -
+      - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
     finally:
       - echo Logged to ECR
   build:
@@ -25,7 +25,7 @@ phases:
   post_build:
     commands:
       - echo Pushing images to ECR
-      - docker push REPOSITORY_URI/elearning-demo/users-ms:latest
-      - docker push REPOSITORY_URI/elearning-demo/courses-ms:latest
+      - docker push $REPOSITORY_URI/elearning-demo/users-ms:latest
+      - docker push $REPOSITORY_URI/elearning-demo/courses-ms:latest
     finally:
       - echo Images pushed to ECR
