@@ -5,9 +5,8 @@ phases:
     commands:
       - echo Entered the install phase...
       - yum update -y
-      - yum install -y gradle
     finally:
-      - echo Gradle installed
+      - echo SO updated
   pre_build:
     commands:
       - echo Login to ECR
@@ -16,8 +15,9 @@ phases:
       - echo Logged to ECR
   build:
     commands:
-      - echo Building microservices
-      - gradle clean build -x test
+      - echo Building microservices artifacts
+      - chmod u+x gradlew
+      - ./gradlew clean build -x test
       - echo Building images
       - docker-compose -f docker-compose.yml -f docker-compose-aws.yml build
     finally:
