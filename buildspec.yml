@@ -23,6 +23,7 @@ phases:
       - docker-compose -f docker-compose.yml -f docker-compose-aws.yml build
     finally:
       - echo Docker images built
+      - docker images
   post_build:
     commands:
       - echo Pushing images to ECR
