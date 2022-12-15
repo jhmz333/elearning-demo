@@ -1,12 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo Entered the install phase...
-      - yum update -y
-    finally:
-      - echo SO updated
   pre_build:
     commands:
       - echo Login to ECR
