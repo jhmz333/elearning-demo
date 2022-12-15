@@ -7,7 +7,7 @@ phases:
       - docker -v
       - docker-compose -v
     finally:
-      - Installation checked
+      - echo Installation checked
   pre_build:
     commands:
       - echo Login to ECR
