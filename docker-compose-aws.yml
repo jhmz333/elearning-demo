@@ -11,9 +11,9 @@ services:
   users-ms:
     image: $REPOSITORY_URI/elearning-demo/users-ms:latest
     build:
-      dockerfile: users-ms/Dockerfile-aws
+      dockerfile: 'Dockerfile-aws'
 
   courses-ms:
     image: $REPOSITORY_URI/elearning-demo/courses-ms:latest
     build:
-      dockerfile: courses-ms/Dockerfile-aws
+      dockerfile: 'Dockerfile-aws'
