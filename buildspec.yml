@@ -1,6 +1,13 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Show docker versions
+      - docker -v
+      - docker-compose -v
+    finally:
+      - Installation checked
   pre_build:
     commands:
       - echo Login to ECR
