@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-ms
+data:
+  port: "8001"
+  ms_name: users-ms
+  ms_version: 0.0.1-SNAPSHOT
+  db_host: mariadb
+  db_port: "3306"
+  db_database: users_ms
+  courses_ms_url: courses-ms:8002
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: courses-ms
+data:
+  port: "8002"
+  ms_name: courses-ms
+  ms_version: 0.0.1-SNAPSHOT
+  db_host: postgres
+  db_port: "5432"
+  db_database: courses_ms
+  users_ms_url: users-ms:8001
