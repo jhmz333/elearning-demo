@@ -9,7 +9,7 @@ data:
   db_host: mariadb
   db_port: "3306"
   db_database: users_ms
-  courses_ms_url: courses-ms:8002
+  config.text: "Setting up default environment variable"
 
 ---
 apiVersion: v1
@@ -23,4 +23,3 @@ data:
   db_host: postgres
   db_port: "5432"
   db_database: courses_ms
-  users_ms_url: users-ms:8001

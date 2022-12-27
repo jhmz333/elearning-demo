@@ -4,6 +4,9 @@ import com.jhmarquez.training.elearning.usersms.models.entities.User;
 import com.jhmarquez.training.elearning.usersms.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,9 +20,24 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Autowired
+    private ApplicationContext context;
+
+    @Autowired
+    private Environment environment;
+
+    @GetMapping("/crash")
+    public void crash() {
+        ((ConfigurableApplicationContext) context).close();
+    }
+
     @GetMapping("/")
-    public List<User> getAll() {
-        return service.findAll();
+    public ResponseEntity<?> getAll() {
+        Map<String, Object> body = new HashMap<>();
+        body.put("users", service.findAll());
+        body.put("pod_info", environment.getProperty("POD_NAME") + ": " + environment.getProperty("POD_IP"));
+        body.put("text", environment.getProperty("config.text"));
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/users")

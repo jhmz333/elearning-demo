@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gateway-ms
+  cloud:
+    gateway:
+      routes:
+        - id: courses-ms
+          uri: lb://courses-ms
+          predicates:
+            - Path=/api/courses/**
+          filters:
+            - StripPrefix=2
+        - id: users-ms
+          uri: lb://users-ms
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=2
+
+server:
+  port: 8090
+

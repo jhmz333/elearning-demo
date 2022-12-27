@@ -9,6 +9,28 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MariaDB102Dialect
     generate-ddl: true
+  cloud:
+    kubernetes:
+      secrets:
+        enable-api: true
+      discovery:
+        all-namespaces: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
 
 logging:
   level:
@@ -18,7 +40,3 @@ logging:
 
 server:
   port: ${PORT:8001}
-
-ms:
-  courses:
-    url: ${COURSES_MS_URL:courses-ms:8002}

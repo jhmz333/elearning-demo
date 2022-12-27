@@ -17,3 +17,8 @@ services:
     image: $REPOSITORY_URI/elearning-demo/courses-ms:latest
     build:
       dockerfile: 'Dockerfile-aws'
+
+  gateway-ms:
+    image: $REPOSITORY_URI/elearning-demo/gateway-ms:latest
+    build:
+      dockerfile: 'Dockerfile-aws'

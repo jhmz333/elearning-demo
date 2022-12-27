@@ -57,6 +57,21 @@ services:
       - postgres
     restart: always
 
+  gateway-ms:
+    container_name: gateway-ms
+    build:
+      context: gateway-ms
+      dockerfile: 'Dockerfile'
+    ports:
+      - '8002:8002'
+    env_file: gateway-ms/.env
+    networks:
+      - microservices-network
+    depends_on:
+      - users-ms
+      - courses-ms
+    restart: always
+
 volumes:
   postgres-data:
     external: true

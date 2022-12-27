@@ -11,6 +11,28 @@ spring:
     generate-ddl: true
     properties:
       hibername.jdbc.lob.non_contextual_creation: true
+  cloud:
+    kubernetes:
+      secrets:
+        enable-api: true
+      discovery:
+        all-namespaces: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
 
 logging:
   level:
@@ -20,7 +42,3 @@ logging:
 
 server:
   port: ${PORT:8002}
-
-ms:
-  users:
-    url: ${USERS_MS_URL:users-ms:8001}

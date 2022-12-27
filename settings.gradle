@@ -2,3 +2,4 @@ rootProject.name = 'elearning-demo'
 
 include 'users-ms'
 include 'courses-ms'
+include 'gateway-ms'
