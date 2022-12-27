@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-ms
+    name: ${MS_NAME:gateway-ms}
   cloud:
     gateway:
       routes:
@@ -18,5 +18,5 @@ spring:
             - StripPrefix=2
 
 server:
-  port: 8090
+  port: ${PORT:8090}
 

@@ -29,5 +29,6 @@ phases:
       - echo Pushing images to ECR
       - docker push $REPOSITORY_URI/elearning-demo/users-ms:latest
       - docker push $REPOSITORY_URI/elearning-demo/courses-ms:latest
+      - docker push $REPOSITORY_URI/elearning-demo/gateway-ms:latest
     finally:
       - echo Images pushed to ECR

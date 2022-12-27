@@ -23,3 +23,13 @@ data:
   db_host: postgres
   db_port: "5432"
   db_database: courses_ms
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-ms
+data:
+  PORT: "8090"
+  MS_NAME: gateway-ms
+  MS_VERSION: 0.0.1-SNAPSHOT
