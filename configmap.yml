@@ -3,12 +3,12 @@ kind: ConfigMap
 metadata:
   name: users-ms
 data:
-  port: "8001"
-  ms_name: users-ms
-  ms_version: 0.0.1-SNAPSHOT
-  db_host: mariadb
-  db_port: "3306"
-  db_database: users_ms
+  PORT: "8001"
+  MS_NAME: users-ms
+  MS_VERSION: 0.0.1-SNAPSHOT
+  DB_HOST: mariadb
+  DB_PORT: "3306"
+  DB_DATABASE: users_ms
   config.text: "Setting up default environment variable"
 
 ---
@@ -17,12 +17,12 @@ kind: ConfigMap
 metadata:
   name: courses-ms
 data:
-  port: "8002"
-  ms_name: courses-ms
-  ms_version: 0.0.1-SNAPSHOT
-  db_host: postgres
-  db_port: "5432"
-  db_database: courses_ms
+  PORT: "8002"
+  MS_NAME: courses-ms
+  MS_VERSION: 0.0.1-SNAPSHOT
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_DATABASE: courses_ms
 
 ---
 apiVersion: v1

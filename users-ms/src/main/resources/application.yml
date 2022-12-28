@@ -7,7 +7,7 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
-    database-platform: org.hibernate.dialect.MariaDB102Dialect
+    database-platform: org.hibernate.dialect.MariaDBDialect
     generate-ddl: true
   cloud:
     kubernetes:
